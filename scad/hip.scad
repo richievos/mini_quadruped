@@ -1,10 +1,8 @@
-
-
 hip(23,12.5);
 
 module hip(l,w){
    difference(){
-            union(){
+      union(){
          //main
          translate([-29,-10,0]) cube([58.5,20,4]);
 
@@ -28,6 +26,5 @@ module hip(l,w){
       for (i = [[-16.5,0,2],[16.5,0,2]] ){
          translate(i)  cube([l,w,22], center=true);
       }
-
    }
 }

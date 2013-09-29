@@ -1,14 +1,14 @@
 backbone(90,14,8,23,12.5);
 
-module backbone(bl,bw,bh,sl,sw){
-	h_pos = ((bl-20) / 2);		
+module backbone(backbone_length, backbone_width, backbone_height, shoulder_length, shoulder_width){
+	h_pos = ((backbone_length-20) / 2);		
 	difference(){
 		// main
-		translate([-(bw/2),-(bl/2),-(bh/2)]) color("purple") cube([bw,bl,bh]);
+		translate([-(backbone_width/2),-(backbone_length/2),-(backbone_height/2)]) color("purple") cube([backbone_width,backbone_length,backbone_height]);
 
 		//servo body cutouts
 		for (i = [[-16.5,h_pos,0],[16.5,h_pos,0],[-16.5,-h_pos,0],[16.5,-h_pos,0]]){
-			translate(i) #cube([sl,sw,bh], center=true);
+			translate(i) #cube([shoulder_length,shoulder_width,backbone_height], center=true);
 		}		
 
 		//servo mount holes

@@ -4,13 +4,7 @@ shoulder(26,5.5,3.5,2,13);
 translate([0,20,0]) shoulder(27,7,3.6,1.75,14);
 
 
-module shoulder(st,sc,hr1,hr2,hrd){
-	// st = servo tall gap
-	// cc = servo clearance from inside wall
-	// hr1 = horn radius1
-	// hr2 = horn radius2
-	// hrd = distance between horn radii
-
+module shoulder(servo_tall_gap,servo_inside_clearance,horn_radius1,horn_radius2,horn_distance_between_radii){
 	//bottom plate constants
 	plate_thick = 3.5;
 	offset_x = 4; offset_y = 4;
@@ -21,45 +15,45 @@ module shoulder(st,sc,hr1,hr2,hrd){
 	m3_nut_height = 1.75;
 
 	//calc'd starts
-	ch_st = (st/2)-1;
-	hr_st = -((st/2)+6);
+	ch_servo_tall_gap = (servo_tall_gap/2)-1;
+	hr_servo_tall_gap = -((servo_tall_gap/2)+6);
 
-	hh = sc+14.15;
+	horn_height = servo_inside_clearance+14.15;
 
 	//channel bracket
 	difference(){
 		union(){
 			//vert wall
-			translate([ch_st,-8,0]) cube([6,16,hh+.35]);
+			translate([ch_servo_tall_gap,-8,0]) cube([6,16,horn_height+.35]);
 			//round top
-			translate([ch_st,0,hh+.35]) rotate([0,90,0]) cylinder(r=8, h=6, $fn=100);
+			translate([ch_servo_tall_gap,0,horn_height+.35]) rotate([0,90,0]) cylinder(r=8, h=6, $fn=100);
 		}
 		// button hole bottom
-		translate([ch_st,0,hh]) rotate([0,90,0]) cylinder(r=3,h=6,$fn=100);		
+		translate([ch_servo_tall_gap,0,horn_height]) rotate([0,90,0]) cylinder(r=3,h=6,$fn=100);		
 		// button hole top
-		translate([ch_st-2,0,hh-.1]) rotate([0,90,0]) cylinder(r=5.6,h=3,$fn=100);	
+		translate([ch_servo_tall_gap-2,0,horn_height-.1]) rotate([0,90,0]) cylinder(r=5.6,h=3,$fn=100);	
 		//bottom channel
-		translate([ch_st+5,-5,-1]) cube([2,10,30]);
+		translate([ch_servo_tall_gap+5,-5,-1]) cube([2,10,30]);
 	}
 	
 	//horn bracket
 	difference(){
 		union(){
 			//vert wall
-			translate([hr_st,-8,0]) cube([5,16,hh+.35]);
+			translate([hr_servo_tall_gap,-8,0]) cube([5,16,horn_height+.35]);
 			//round top
-			translate([hr_st,0,hh+.35]) rotate([0,90,0]) cylinder(r=8, h=5, $fn=100);
+			translate([hr_servo_tall_gap,0,horn_height+.35]) rotate([0,90,0]) cylinder(r=8, h=5, $fn=100);
 		}
 		//servo horn hole
-		translate([hr_st,0,hh]) rotate([0,90,0]) cylinder(r=hr1,h=6,$fn=100);
+		translate([hr_servo_tall_gap,0,horn_height]) rotate([0,90,0]) cylinder(r=horn_radius1,h=6,$fn=100);
 		//servo horn channel
 		hull(){	
 			//top channel
-			translate([hr_st-1,-3.5,hh]) cube([3,7,9]);
+			translate([hr_servo_tall_gap-1,-3.5,horn_height]) cube([3,7,9]);
 			//large round
-			translate([hr_st-1,0,hh]) rotate([0,90,0]) cylinder(r=hr1,h=3,$fn=100);	
+			translate([hr_servo_tall_gap-1,0,horn_height]) rotate([0,90,0]) cylinder(r=horn_radius1,h=3,$fn=100);	
 			//small round
-			translate([hr_st-1,0,hh-hrd]) rotate([0,90,0]) cylinder(r=hr2,h=3,$fn=100);
+			translate([hr_servo_tall_gap-1,0,horn_height-horn_distance_between_radii]) rotate([0,90,0]) cylinder(r=horn_radius2,h=3,$fn=100);
 		}
 	}
 

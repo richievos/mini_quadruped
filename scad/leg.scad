@@ -1,6 +1,6 @@
 leg(23,12.5);
 
-module leg(sl,sw){
+module leg(shoulder_length,shoulder_width){
 	difference(){
 		//solid parts
 		union(){
@@ -25,7 +25,7 @@ module leg(sl,sw){
 			translate(i) cylinder(r=1,h=20,$fn=20);
 		}
 		//hole for servo body
-		translate([-17,0,2])  cube([sl,sw,22], center=true);
+		translate([-17,0,2])  cube([shoulder_length,shoulder_width,22], center=true);
 	}
 }
 
