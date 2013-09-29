@@ -1,0 +1,1 @@
+This is a set of files for building a quadruped, based on [TheCase's mini quadruped](http://www.thingiverse.com/thing:38159) on thingiverse.
